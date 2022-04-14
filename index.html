@@ -81,6 +81,28 @@
         });
       };
       document.body.appendChild(script);
+	  
+			window.onload = async function() {
+				const loginReq = await fetch('https://postgresql-game-listing.herokuapp.com/login', {
+					method: 'POST',
+					body: {},
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				});
+				const loginJson = await loginReq.json();
+				
+				const accessToken = loginJson.accessToken;
+				const playReq = await fetch('https://postgresql-game-listing.herokuapp.com/api/v1/games/views?gameId=18', {
+					method: 'PUT',
+					body: {},
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': 'Bearer ' + accessToken
+					}
+				});
+				await playReq.json();
+			};
     </script>
   </body>
 </html>
