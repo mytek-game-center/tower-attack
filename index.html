@@ -83,7 +83,7 @@
       document.body.appendChild(script);
 	  
 			window.onload = async function() {
-				const loginReq = await fetch('https://postgresql-game-listing.herokuapp.com/login', {
+				const loginReq = await fetch('https://mytek-game-center.herokuapp.com/login', {
 					method: 'POST',
 					body: {},
 					headers: {
@@ -93,7 +93,7 @@
 				const loginJson = await loginReq.json();
 				
 				const accessToken = loginJson.accessToken;
-				const playReq = await fetch('https://postgresql-game-listing.herokuapp.com/api/v1/games/views?gameId=18', {
+				const playReq = await fetch('https://mytek-game-center.herokuapp.com/api/v1/games/views?gameId=18', {
 					method: 'PUT',
 					body: {},
 					headers: {
